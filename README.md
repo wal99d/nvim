@@ -1,5 +1,5 @@
 # Typical Nvim Setup for Golang Tinkerer
-### Required Dependencies:
+### <i class="fa-solid fa-bolt"></i> Required Dependencies:
 - neovim >= 0.8
 
 
