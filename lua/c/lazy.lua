@@ -1,4 +1,4 @@
--- print("Hello from Lazy NVIM")
+
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 -- split screen and navigation
 vim.keymap.set("n", "<leader>v", ":vsplit<CR><C-w>l", { noremap = true })
