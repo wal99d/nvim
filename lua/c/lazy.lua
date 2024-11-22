@@ -31,7 +31,8 @@ vim.opt.wildmenu = true
 vim.filetype.add({ extension = { templ = "templ" } })
 vim.cmd.colorscheme("habamax")
 vim.opt.termguicolors = true
-
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
@@ -90,7 +91,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- Run gofmt + goimports on save
 
+local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimports()
+  end,
+  group = format_sync_grp,
+})
 
 -- Setup lazy.nvim
 local autocmd = vim.api.nvim_create_autocmd
